@@ -1,3 +1,5 @@
+%AW. See comments below 0.85/1.
+
 %Inclass assignment 8
 
 %Using the swalign function
@@ -13,6 +15,10 @@ seq2 = [seq(1:40) randseq(20) seq(61:100)]
 
 [score, align, start] = swalign(seq,seq2,'Alphabet','nt','GapOpen',0.001,'Showscore',true)
 
+
+%AW: what you wrote below is technically true for the algorithm implementation, but how does it
+% impact the results? One will favor more gaps and the other more mismatches without gaps. -0.05.
+
 %In the first alignment, there is a very large gapopen perameter, which
 %will increase the penalty assigned to filling in from the sides.
 %This enriches the matrix for filling in from the diagonal. In the
@@ -25,6 +31,10 @@ seq2 = [seq(1:40) randseq(20) seq(61:100)]
 % explain the result
 [score, align, start] = swalign(seq,seq2,'Alphabet','nt','GapOpen',0.001,'ExtendGap',30,'Showscore',true)
 
+
+%AW: I'm not sure what you mean by variability or what are alignment 1, 2,3. A simple explanation is
+% that this will favor opening gaps but not extending them, so there will be many short gaps. -0.05.
+
 %With the Gapopen perameter very small, we are not penalizing gaps has
 %heavily in the sequence. The Extendgap, however, penalizes consecutive
 %gaps. So here we see an increase in the amout of variability from
@@ -35,6 +45,8 @@ seq2 = [seq(1:40) randseq(20) seq(61:100)]
 % of ExtendGap and explain the result. 
 
 [score, align, start] = swalign(seq,seq2,'Alphabet','nt','ExtendGap',30,'Showscore',true)
+
+%AW: This is the opposite of what was asked - ExtendGap should be low. -0.05.
 
 %Here we are only penalizing heavily the extensions of gaps, as opposed to
 %both gaps and extended gaps. This allows for the formation of gaps, but
